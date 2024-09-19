@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+html {
+  height: 100lvh;
+  width: 100lvw;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(ellipse at top, #c1edf8, transparent),
+    radial-gradient(ellipse at bottom, hsl(110, 100%, 84%), transparent);
+}
