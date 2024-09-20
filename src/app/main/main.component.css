@@ -1,0 +1,44 @@
+main {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr 3fr 2fr;
+  width: 100%;
+}
+
+@media only screen and (max-width: 550px) {
+  main {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  .card {
+    grid-column: 1;
+  }
+
+  .card:first-of-type {
+    grid-row: 1;
+  }
+
+  .card:nth-of-type(2) {
+    grid-row: 2;
+  }
+}
+
+.card {
+  max-height: 40vh;
+  display: grid;
+  grid-template-rows: 1fr 5fr;
+  background-color: hsla(180, 17%, 93%, 25%);
+  border-bottom: 1px solid hsla(171, 26%, 57%, 80%);
+  padding: 1rem;
+  border-radius: 2rem;
+  box-shadow: 0 4px 6px rgba(102, 153, 153, 0.1);
+}
+
+.card:first-of-type {
+  grid-column: 2;
+}
+
+.card:nth-of-type(2) {
+  grid-column: 4;
+}

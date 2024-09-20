@@ -22,37 +22,5 @@
   .container {
     grid-template-columns: 1fr;
   }
-
-  main {
-    grid-template-columns: 1fr;
-  }
 }
 
-main {
-  grid-area: main;
-  display: grid;
-  grid-template-columns: 2fr 3fr 1fr 3fr 2fr;
-  width: 100%;
-}
-
-
-.card {
-  max-height: 40vh;
-  display: grid;
-  grid-template-rows: 1fr 5fr;
-  background-color: hsla(180, 17%, 93%, 25%);
-  border-bottom: 1px solid hsla(171, 26%, 57%, 80%);
-  padding: 1rem;
-  border-radius: 2rem;
-  box-shadow: 0 4px 6px rgba(102, 153, 153, 0.1);
-}
-
-.card:first-of-type {
-  grid-column-start: 2;
-  grid-column-end: 3;
-}
-
-.card:nth-of-type(2) {
-  grid-column-start: 4;
-  grid-column-end: 5;
-}
