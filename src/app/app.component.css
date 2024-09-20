@@ -1,9 +1,11 @@
 .container {
   margin: 0;
   padding: 0;
+  min-height: 100vh;
 
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
   grid-template-areas:
     "header"
     "main"
@@ -28,8 +30,8 @@
 
 header {
   grid-area: header;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 2rem;
   border-bottom: 1px solid hsla(171, 26%, 57%, 10%);
   box-shadow: 0 2px 2px rgba(102, 153, 153, 0.1);
@@ -57,7 +59,12 @@ footer {
   padding-top: 1rem;
 }
 
+footer p {
+  padding-right: 1rem;
+}
+
 .card {
+  max-height: 40vh;
   display: grid;
   grid-template-rows: 1fr 5fr;
   background-color: hsla(180, 17%, 93%, 25%);
@@ -112,10 +119,30 @@ footer {
   padding: 0.25rem 0.5rem;
 }
 
+.nav-buttons li a:hover {
+  box-shadow: 0 4px 6px rgba(102, 153, 153, 0.1);
+}
+
 .nav-buttons li:first-of-type a {
   background-color: hsla(150, 70%, 82%, 0.6);
+}
+
+.nav-buttons li:first-of-type a:hover {
+  background-color: hsla(150, 70%, 82%, 0.2);
 }
 
 .nav-buttons li:nth-of-type(2) a {
   background-color: hsla(218, 70%, 82%, 0.6);
 }
+
+.nav-buttons li:nth-of-type(2) a:hover {
+  background-color: hsla(218, 70%, 82%, 0.2);
+}
+
+.logo-icon {
+  padding-left: 1rem;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+}
+
