@@ -2,7 +2,7 @@
   <ul role="list" class="nav-list">
     @for (navLink of navLinks; track navLink.label) {
       <li>
-        <a href="{{ navLink.url }}">{{ navLink.label }}</a>
+        <a [routerLink]="navLink.url">{{ navLink.label }}</a>
       </li>
     }
   </ul>
@@ -10,15 +10,20 @@
   <div class="nav-buttons">
     @if (isAuthenticated) {
       <ul>
+        @for (navAuthLink of navAuthenticatedLinks; track navAuthLink.label) {
+          <li>
+            <a [routerLink]="navAuthLink.url">{{ navAuthLink.label }}</a>
+          </li>
+        }
         <li>
-          <ul role="list" class="nav-list"></ul>
+          <a [routerLink]="['/profile']">Profile</a>
         </li>
       </ul>
     } @else {
       <ul class="nav-list">
         @for (navGuestLink of navGuestLinks; track navGuestLink.label) {
           <li>
-            <a href="{{ navGuestLink.url }}">{{ navGuestLink.label }}</a>
+            <a [routerLink]="navGuestLink.url">{{ navGuestLink.label }}</a>
           </li>
         }
       </ul>
