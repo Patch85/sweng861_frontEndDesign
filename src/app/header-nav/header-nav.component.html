@@ -1,16 +1,27 @@
 <nav>
   <ul role="list" class="nav-list">
-    <li><a href="#">Solutions</a></li>
-    <li><a href="#">Community</a></li>
-    <li><a href="#">Resources</a></li>
-    <li><a href="#">Pricing</a></li>
-    <li><a href="#">Contact</a></li>
+    @for (navLink of navLinks; track navLink.label) {
+    <li>
+      <a href="{{ navLink.url }}">{{ navLink.label }}</a>
+    </li>
+    }
   </ul>
 
   <div class="nav-buttons">
-    <ul role="list" class="nav-list">
-      <li><a href="#">Sign In</a></li>
-      <li><a href="#">Register</a></li>
+    @if (isAuthenticated) {
+    <ul>
+      <li>
+        <ul role="list" class="nav-list"></ul>
+      </li>
     </ul>
+    } @else {
+    <ul class="nav-list">
+      @for (navGuestLink of navGuestLinks; track navGuestLink.label) {
+      <li>
+        <a href="{{ navGuestLink.url }}">{{ navGuestLink.label }}</a>
+      </li>
+      }
+    </ul>
+    }
   </div>
 </nav>
