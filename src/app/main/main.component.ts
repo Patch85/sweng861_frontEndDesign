@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
-import { CardComponent } from '../card/card.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [CardComponent],
+  imports: [RouterOutlet],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css',
 })
-export class MainComponent {
-  CardComponent = CardComponent;
-}
+export class MainComponent {}
