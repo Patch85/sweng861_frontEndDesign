@@ -1,0 +1,27 @@
+<nav>
+  <ul role="list" class="nav-list">
+    @for (navLink of navLinks; track navLink.label) {
+      <li>
+        <a href="{{ navLink.url }}">{{ navLink.label }}</a>
+      </li>
+    }
+  </ul>
+
+  <div class="nav-buttons">
+    @if (isAuthenticated) {
+      <ul>
+        <li>
+          <ul role="list" class="nav-list"></ul>
+        </li>
+      </ul>
+    } @else {
+      <ul class="nav-list">
+        @for (navGuestLink of navGuestLinks; track navGuestLink.label) {
+          <li>
+            <a href="{{ navGuestLink.url }}">{{ navGuestLink.label }}</a>
+          </li>
+        }
+      </ul>
+    }
+  </div>
+</nav>

@@ -1,0 +1,9 @@
+.card {
+  display: grid;
+  grid-template-rows: 1fr 5fr;
+  background-color: hsla(180, 17%, 93%, 25%);
+  border-bottom: 1px solid hsla(171, 26%, 57%, 80%);
+  padding: 1rem;
+  border-radius: 2rem;
+  box-shadow: 0 4px 6px rgba(102, 153, 153, 0.1);
+}

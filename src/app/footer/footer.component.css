@@ -1,0 +1,11 @@
+footer {
+  grid-area: footer;
+  display: flex;
+  justify-content: right;
+  align-items: bottom;
+  padding-top: 1rem;
+}
+
+footer p {
+  padding-right: 1rem;
+}
