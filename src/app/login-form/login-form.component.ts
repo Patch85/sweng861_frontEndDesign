@@ -1,14 +1,16 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 @Component({
   selector: 'app-login-form',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.css',
 })
@@ -17,13 +19,15 @@ export class LoginFormComponent {
 
   createLoginForm() {
     this.loginForm = this.fb.group({
-      email: [''],
-      password: [''],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
   onSubmit() {
-    console.log('Your form data:', this.loginForm.value);
+    if (this.loginForm.valid) {
+      console.log(this.loginForm.value);
+    }
   }
 
   constructor(private fb: FormBuilder) {

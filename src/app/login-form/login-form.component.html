@@ -7,7 +7,23 @@
       id="loginEmail"
       placeholder="name@example.com"
       formControlName="email"
+      required
     />
+    <div
+      *ngIf="
+        loginForm.get('email')?.invalid &&
+        (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)
+      "
+      class="formInputError"
+    >
+      <span *ngIf="loginForm.get('email')?.hasError('required')">
+        Email is required
+      </span>
+
+      <span *ngIf="loginForm.get('email')?.hasError('email')">
+        Enter a valid email address
+      </span>
+    </div>
   </div>
 
   <div>
@@ -17,8 +33,24 @@
       name="loginPassword"
       id="loginPassword"
       formControlName="password"
+      required
     />
+    <div
+      *ngIf="
+        loginForm.get('password')?.invalid &&
+        (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)
+      "
+      class="formInputError"
+    >
+      <span *ngIf="loginForm.get('password')?.hasError('required')">
+        Password is required
+      </span>
+
+      <span *ngIf="loginForm.get('password')?.hasError('minlength')">
+        Password must be at least 6 characters
+      </span>
+    </div>
   </div>
 
-  <input type="submit" value="Sign In" />
+  <button type="submit" [disabled]="loginForm.invalid">Sign In</button>
 </form>

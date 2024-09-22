@@ -42,7 +42,7 @@
   font-style: italic;
 }
 
-.loginForm input[type="submit"] {
+.loginForm button[type="submit"] {
   text-decoration: none;
   color: #004d40;
   border: 1px solid hsla(171, 26%, 57%, 60%);
@@ -51,7 +51,21 @@
   background-color: hsla(150, 70%, 82%, 0.2);
 }
 
-.loginForm input[type="submit"]:hover {
+.loginForm button[type="submit"]:not([disabled]):hover {
   background-color: hsla(150, 70%, 82%, 0.6);
   box-shadow: 0 4px 6px rgba(102, 153, 153, 0.1);
+}
+
+.loginForm button[type="submit"]:disabled {
+  background-color: hsla(150, 1%, 69%, 0.6);
+  color: hsla(156, 2%, 40%, 0.8);
+  text-decoration: line-through;
+}
+
+.formInputError {
+  color: darkred;
+  font-size: 0.8em;
+  font-style: italic;
+  padding-top: 0.25rem;
+  padding-left: 0.5rem;
 }
