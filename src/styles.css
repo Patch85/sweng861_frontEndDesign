@@ -7,6 +7,6 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: radial-gradient(ellipse at top, #c1edf8, transparent),
-    radial-gradient(ellipse at bottom, hsl(110, 100%, 84%), transparent);
+  background: radial-gradient(ellipse at left, #c1edf8, transparent),
+    radial-gradient(ellipse at right, hsl(110, 100%, 84%), transparent);
 }
