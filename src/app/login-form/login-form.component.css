@@ -1,0 +1,71 @@
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+.loginFrom div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginForm div label {
+  display: block;
+  font-size: large;
+  margin-bottom: 0.25rem;
+}
+
+.loginForm div input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid hsla(171, 26%, 57%, 80%);
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(102, 153, 153, 0.1);
+  background-color: hsla(66, 33%, 94%, 0.5);
+}
+
+.loginForm div input:hover {
+  background-color: hsla(66, 33%, 94%, 0.6);
+  box-shadow: 0 4px 6px rgba(102, 153, 153, 0.2);
+}
+
+.loginForm div input:focus {
+  background-color: hsla(66, 33%, 94%, 0.8);
+}
+
+.loginForm div input::placeholder {
+  color: hsla(171, 21%, 19%, 0.3);
+  font-style: italic;
+}
+
+.loginForm button[type="submit"] {
+  text-decoration: none;
+  color: #004d40;
+  border: 1px solid hsla(171, 26%, 57%, 60%);
+  border-radius: 1rem;
+  padding: 0.25rem 0.5rem;
+  background-color: hsla(150, 70%, 82%, 0.2);
+}
+
+.loginForm button[type="submit"]:not([disabled]):hover {
+  background-color: hsla(150, 70%, 82%, 0.6);
+  box-shadow: 0 4px 6px rgba(102, 153, 153, 0.1);
+}
+
+.loginForm button[type="submit"]:disabled {
+  background-color: hsla(150, 1%, 69%, 0.6);
+  color: hsla(156, 2%, 40%, 0.8);
+  text-decoration: line-through;
+}
+
+.formInputError {
+  color: darkred;
+  font-size: 0.8em;
+  font-style: italic;
+  padding-top: 0.25rem;
+  padding-left: 0.5rem;
+}
