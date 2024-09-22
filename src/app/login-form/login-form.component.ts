@@ -1,14 +1,32 @@
 import { Component } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 @Component({
   selector: 'app-login-form',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, ReactiveFormsModule],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.css',
 })
 export class LoginFormComponent {
-  onSubmit(form: NgForm) {
-    console.log('Your form data:', form.value);
+  loginForm!: FormGroup;
+
+  createLoginForm() {
+    this.loginForm = this.fb.group({
+      email: [''],
+      password: [''],
+    });
+  }
+
+  onSubmit() {
+    console.log('Your form data:', this.loginForm.value);
+  }
+
+  constructor(private fb: FormBuilder) {
+    this.createLoginForm();
   }
 }
