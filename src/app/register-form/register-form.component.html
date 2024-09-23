@@ -1,0 +1,220 @@
+<form class="registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="firstName">First Name</label>
+    <input
+      type="text"
+      name="firstName"
+      id="firstName"
+      placeholder="John"
+      formControlName="firstName"
+      required
+    />
+    <div
+      *ngIf="
+        registerForm.get('firstName')?.invalid &&
+        (registerForm.get('firstName')?.touched ||
+          registerForm.get('firstName')?.dirty)
+      "
+      class="formInputError"
+    >
+      <span *ngIf="registerForm.get('firstName')?.hasError('required')">
+        First Name is required
+      </span>
+    </div>
+  </div>
+
+  <div>
+    <label for="lastName">Last Name</label>
+    <input
+      type="text"
+      name="lastName"
+      id="lastName"
+      placeholder="Doe"
+      formControlName="lastName"
+      required
+    />
+    <div
+      *ngIf="
+        registerForm.get('lastName')?.invalid &&
+        (registerForm.get('lastName')?.touched ||
+          registerForm.get('lastName')?.dirty)
+      "
+      class="formInputError"
+    >
+      <span *ngIf="registerForm.get('lastName')?.hasError('required')">
+        Last Name is required
+      </span>
+    </div>
+  </div>
+
+  <div>
+    <label for="title">Job Title</label>
+    <input
+      type="text"
+      name="title"
+      id="title"
+      placeholder="Software Engineer"
+      formControlName="title"
+    />
+  </div>
+
+  <div>
+    <label for="telephone">Phone Number</label>
+    <input
+      type="tel"
+      name="telephone"
+      id="telephone"
+      placeholder="(123) 456-7890"
+      formControlName="telephone"
+    />
+  </div>
+
+  <div class="aboutMeDiv">
+    <label for="aboutMe">About Me</label>
+    <textarea
+      name="aboutMe"
+      id="aboutMe"
+      formControlName="aboutMe"
+      placeholder="Tell us about yourself..."
+    ></textarea>
+  </div>
+
+  <div>
+    <label for="city">City</label>
+    <input
+      type="text"
+      name="city"
+      id="city"
+      placeholder="New York"
+      formControlName="city"
+      required
+    />
+    <div
+      *ngIf="
+        registerForm.get('city')?.invalid &&
+        (registerForm.get('city')?.touched || registerForm.get('city')?.dirty)
+      "
+      class="formInputError"
+    >
+      <span *ngIf="registerForm.get('city')?.hasError('required')">
+        City is required
+      </span>
+    </div>
+  </div>
+
+  <div>
+    <label for="state">State</label>
+    <input
+      type="text"
+      name="state"
+      id="state"
+      placeholder="NY"
+      formControlName="state"
+    />
+    <div
+      *ngIf="
+        registerForm.get('state')?.invalid &&
+        (registerForm.get('state')?.touched || registerForm.get('state')?.dirty)
+      "
+      class="formInputError"
+    >
+      <span *ngIf="registerForm.get('state')?.hasError('required')">
+        State is required
+      </span>
+    </div>
+  </div>
+
+  <div>
+    <label for="email">Email</label>
+    <input
+      type="email"
+      name="email"
+      id="email"
+      placeholder="name@example.com"
+      required
+      formControlName="email"
+    />
+    <div
+      *ngIf="
+        registerForm.get('email')?.invalid &&
+        (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)
+      "
+      class="formInputError"
+    >
+      <span *ngIf="registerForm.get('email')?.hasError('required')">
+        Email is required
+      </span>
+
+      <span *ngIf="registerForm.get('email')?.hasError('email')">
+        Enter a valid email address
+      </span>
+    </div>
+  </div>
+
+  <div>&nbsp;</div>
+
+  <div>
+    <label for="password">Password</label>
+    <input
+      type="password"
+      name="password"
+      id="password"
+      formControlName="password"
+      placeholder="strong_Password-456!"
+      required
+    />
+    <div
+      *ngIf="
+        registerForm.get('password')?.invalid &&
+        (registerForm.get('password')?.touched ||
+          registerForm.get('password')?.dirty)
+      "
+      class="formInputError"
+    >
+      <span *ngIf="registerForm.get('password')?.hasError('required')">
+        Confirm Password is required
+      </span>
+
+      <span *ngIf="registerForm.get('password')?.hasError('minlength')">
+        Password must be at least 6 characters long
+      </span>
+    </div>
+  </div>
+
+  <div>
+    <label for="confirmPassword">Confirm Password</label>
+    <input
+      type="password"
+      name="confirmPassword"
+      id="confirmPassword"
+      formControlName="confirmPassword"
+      placeholder="strong_Password-456!"
+      required
+    />
+    <div
+      *ngIf="
+        (registerForm.get('confirmPassword')?.invalid &&
+          (registerForm.get('confirmPassword')?.touched ||
+            registerForm.get('confirmPassword')?.dirty)) ||
+        registerForm.hasError('passwordsMismatch')
+      "
+      class="formInputError"
+    >
+      <span *ngIf="registerForm.get('confirmPassword')?.hasError('required')">
+        Confirm Password is required
+      </span>
+
+      <span *ngIf="registerForm.get('confirmPassword')?.hasError('minlength')">
+        Password must be at least 6 characters long
+      </span>
+
+      <span *ngIf="registerForm.hasError('passwordsMismatch')">
+        Passwords do not match
+      </span>
+    </div>
+  </div>
+
+  <button type="reset">Reset Form</button>
+
+  <button type="submit" [disabled]="registerForm.invalid">Sign Up</button>
+</form>

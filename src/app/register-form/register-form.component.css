@@ -1,0 +1,111 @@
+.registerForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+@media only screen and (max-width: 550px) {
+  .registerForm {
+    grid-template-columns: 1fr;
+    grid-gap: 0;
+  }
+
+  .aboutMeDiv {
+    grid-column-start: 1;
+    grid-column-end: 1;
+  }
+}
+
+.registerForm div {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+}
+
+.registerForm div label {
+  display: block;
+  font-size: large;
+  margin-bottom: 0.25rem;
+}
+
+.registerForm div input {
+  width: 90%;
+  padding: 0.5rem;
+  border: 1px solid hsla(171, 26%, 57%, 80%);
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(102, 153, 153, 0.1);
+  background-color: hsla(66, 33%, 94%, 0.5);
+}
+
+.registerForm div input:hover {
+  background-color: hsla(66, 33%, 94%, 0.6);
+  box-shadow: 0 4px 6px rgba(102, 153, 153, 0.2);
+}
+
+.registerForm div input:focus {
+  background-color: hsla(66, 33%, 94%, 0.8);
+}
+
+.registerForm div input::placeholder {
+  color: hsla(171, 21%, 19%, 0.3);
+  font-style: italic;
+}
+
+.registerForm div textarea {
+  min-height: 4rem;
+  padding: 1rem;
+  border: 1px solid hsla(171, 26%, 57%, 80%);
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(102, 153, 153, 0.1);
+  background-color: hsla(66, 33%, 94%, 0.5);
+  width: 80%;
+}
+
+.registerForm div textarea::placeholder {
+  color: hsla(171, 21%, 19%, 0.3);
+  font-style: italic;
+}
+
+.aboutMeDiv {
+  grid-column: 1 / span 2;
+}
+
+.formInputError {
+  color: darkred;
+  font-size: 0.8em;
+  font-style: italic;
+  padding-top: 0.25rem;
+  padding-left: 0.5rem;
+}
+
+.registerForm button {
+  color: #004d40;
+  border: 1px solid hsla(171, 26%, 57%, 60%);
+  border-radius: 1rem;
+  padding: 0.25rem 0.5rem;
+  min-width: 20%;
+}
+
+.registerForm button[type="reset"] {
+  background-color: hsla(218, 70%, 82%, 0.2);
+}
+
+.registerForm button[type="reset"]:hover {
+  background-color: hsla(218, 70%, 82%, 0.6);
+  box-shadow: 0 4px 6px rgba(102, 153, 153, 0.1);
+}
+
+.registerForm button[type="submit"] {
+  background-color: hsla(150, 70%, 82%, 0.2);
+}
+
+.registerForm button[type="submit"]:not([disabled]):hover {
+  background-color: hsla(150, 70%, 82%, 0.6);
+  box-shadow: 0 4px 6px rgba(102, 153, 153, 0.1);
+}
+
+.registerForm button[type="submit"]:disabled {
+  background-color: hsla(150, 1%, 69%, 0.6);
+  color: hsla(156, 2%, 40%, 0.8);
+}
