@@ -1,0 +1,14 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Individual Assignment: Backend Development",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Dillon A. John",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}
