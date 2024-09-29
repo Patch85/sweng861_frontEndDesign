@@ -1,5 +1,6 @@
 {
-  "name": "front-end-design",
+  "name": "frontend",
+  "description": "Individual Assignment: Frontend Development",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
