@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Individual Assignment: Full Stack Development",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier": "prettier --write ./"
   },
   "author": "",
   "license": "ISC",
