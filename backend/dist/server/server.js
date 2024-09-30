@@ -1,41 +1,38 @@
 "use strict";
-var __importDefault =
-  (this && this.__importDefault) ||
-  function (mod) {
-    return mod && mod.__esModule ? mod : { default: mod };
-  };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
-const user_model_1 = __importDefault(require("../models/user.model"));
+const cors_1 = __importDefault(require("cors"));
 const express_1 = __importDefault(require("express"));
+const user_model_1 = __importDefault(require("../models/user.model"));
 const app = (0, express_1.default)();
 const port = process.env.PORT || 3000;
 // Middleware
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use((0, cors_1.default)({
+    origin: 'http://localhost:4200', // allow the server to accept requests from the Angular app
+}));
+app.use(express_1.default.json());
+app.use(express_1.default.urlencoded({ extended: true }));
 // MongoDB connection
-const mongoUri = "mongodb://localhost:27017/individual_practice";
+const mongoUri = 'mongodb://localhost:27017/individual_practice';
 mongoose_1.default
-  .connect(mongoUri, {})
-  .then(() => console.log("MongoDB connected successfully"))
-  .catch((err) => console.error("MongoDB connection error:", err));
+    .connect(mongoUri, {})
+    .then(() => console.log('MongoDB connected successfully'))
+    .catch((err) => console.error('MongoDB connection error:', err));
 // Define routes
-app.get("/", (req, res) => {
-  res.send(
-    `Hello World! This is the backend server. It is running on port ${port} It was programmed in TypeScript`,
-  );
+app.post('/api/users', async (req, res) => {
+    console.log(`Request body: ${JSON.stringify(req.body)}`);
+    const user = new user_model_1.default(req.body);
+    await user.save();
+    res.status(201).json(user);
 });
-app.get("/api/users", async (req, res) => {
-  const users = await user_model_1.default.find();
-  res.json(users);
-});
-app.post("/api/users", async (req, res) => {
-  console.log(`Request body: ${JSON.stringify(req.body)}`);
-  const user = new user_model_1.default(req.body);
-  await user.save();
-  res.status(201).json(user);
-});
+// app.get('/api/users', async (req: Request, res: Response) => {
+//   const users = await User.find();
+//   res.json(users);
+// });
 // Start the server
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+    console.log(`Server is running on http://localhost:${port}`);
 });
