@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
 import User from '../models/user.model';
 
@@ -13,6 +14,9 @@ export const registerUser = async (
     if (existingUser) {
       return res.status(400).json({ error: 'Email is already in use' });
     }
+
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     // Create and save the new user
     const user = new User(req.body);
