@@ -7,6 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { UserService } from '../services/user.service';
 import { passwordMatchValidator } from '../shared/password-match.directive';
 
 @Component({
@@ -39,11 +40,23 @@ export class RegisterFormComponent {
 
   onSubmit() {
     if (this.registerForm.valid) {
-      console.log(this.registerForm.value);
+      // console.log(this.registerForm.value);
+      this.userService.registerUser(this.registerForm.value).subscribe(
+        (response) => {
+          console.log('User registered successfully', response);
+          this.registerForm.reset();
+        },
+        (error) => {
+          console.error('User registration failed:', error);
+        },
+      );
     }
   }
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+  ) {
     this.createRegisterForm();
   }
 }
