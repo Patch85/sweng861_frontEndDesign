@@ -37,8 +37,10 @@
     />
     <div
       *ngIf="
-        loginForm.get('password')?.invalid &&
-        (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)
+        (loginForm.get('password')?.invalid &&
+          (loginForm.get('password')?.touched ||
+            loginForm.get('password')?.dirty)) ||
+        serverError
       "
       class="formInputError"
     >
@@ -49,6 +51,8 @@
       <span *ngIf="loginForm.get('password')?.hasError('minlength')">
         Password must be at least 6 characters
       </span>
+
+      <span *ngIf="serverError">{{ serverError }}</span>
     </div>
   </div>
 

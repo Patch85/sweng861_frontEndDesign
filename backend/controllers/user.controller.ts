@@ -28,3 +28,29 @@ export const registerUser = async (
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
+export const authenticateUser = async (
+  req: Request,
+  res: Response,
+): Promise<any> => {
+  try {
+    const { email, password } = req.body;
+
+    // Find the user by email
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ error: 'Invalid email' });
+    }
+
+    // Compare the provided password with the hashed password
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ error: 'Invalid password' });
+    }
+
+    // Authentication successful
+    res.status(200).json({ message: 'Login successful' });
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
