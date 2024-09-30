@@ -7,6 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { UserService } from '../services/user.service';
 import { passwordMatchValidator } from '../shared/password-match.directive';
 
 @Component({
@@ -18,6 +19,7 @@ import { passwordMatchValidator } from '../shared/password-match.directive';
 })
 export class RegisterFormComponent {
   registerForm!: FormGroup;
+  serverError: string | null = null;
 
   createRegisterForm() {
     this.registerForm = this.fb.group(
@@ -39,11 +41,32 @@ export class RegisterFormComponent {
 
   onSubmit() {
     if (this.registerForm.valid) {
-      console.log(this.registerForm.value);
+      this.userService.registerUser(this.registerForm.value).subscribe(
+        (response) => {
+          console.log('User registered successfully', response);
+          this.registerForm.reset();
+          this.serverError = null;
+        },
+        (error) => {
+          console.error('User registration failed:', error);
+          if (
+            error.status === 400 &&
+            error.error.error === 'Email is already in use'
+          ) {
+            this.serverError = 'Email is already in use';
+          } else {
+            this.serverError =
+              'An unexpected error occurred. Please try again later.';
+          }
+        },
+      );
     }
   }
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+  ) {
     this.createRegisterForm();
   }
 }

@@ -136,8 +136,10 @@
     />
     <div
       *ngIf="
-        registerForm.get('email')?.invalid &&
-        (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)
+        (registerForm.get('email')?.invalid &&
+          (registerForm.get('email')?.touched ||
+            registerForm.get('email')?.dirty)) ||
+        serverError
       "
       class="formInputError"
     >
@@ -148,6 +150,8 @@
       <span *ngIf="registerForm.get('email')?.hasError('email')">
         Enter a valid email address
       </span>
+
+      <span *ngIf="serverError">{{ serverError }}</span>
     </div>
   </div>
 
