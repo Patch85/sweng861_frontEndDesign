@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import cors from 'cors';
 import express, { Request, Response } from 'express';
-import User from '../models/user.model';
+import { registerUser } from '../controllers/user.controller';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -24,12 +24,7 @@ mongoose
 
 // Define routes
 
-app.post('/api/users', async (req: Request, res: Response) => {
-  const user = new User(req.body);
-  await user.save();
-
-  res.status(201).json(user);
-});
+app.post('/api/users', registerUser);
 
 // app.get('/api/users', async (req: Request, res: Response) => {
 //   const users = await User.find();
