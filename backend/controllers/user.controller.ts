@@ -7,7 +7,7 @@ export const registerUser = async (
   res: Response,
 ): Promise<any> => {
   try {
-    const { email } = req.body;
+    const { email, password } = req.body;
 
     // Check if the email already exists
     const existingUser = await User.findOne({ email });
@@ -16,10 +16,11 @@ export const registerUser = async (
     }
 
     // Hash the password
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     // Create and save the new user
-    const user = new User(req.body);
+    const user = new User({ ...req.body, password: hashedPassword });
     await user.save();
 
     res.status(201).json(user);
